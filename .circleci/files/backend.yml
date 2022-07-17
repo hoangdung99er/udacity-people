@@ -28,7 +28,7 @@ Resources:
       InstanceType: t2.micro
       SecurityGroups:
         - Ref: InstanceSecurityGroup
-      KeyName: primary-keyxxxx
+      KeyName: primary-key
       ImageId: ami-0892d3c7ee96c0bf7
       Tags:
         - Key: Name

@@ -195,7 +195,7 @@ jobs:
           root: ~/
           paths:
             - project/.circleci/ansible/inventory.txt
-      # Here's where you will add some code to rollback on failure      
+      - notify_on_failure
 
 #   configure-infrastructure:
 #     docker:
@@ -351,6 +351,9 @@ workflows:
           requires: [build-frontend]
       - deploy-infrastructure:
           requires: [test-frontend, test-backend, scan-frontend, scan-backend]
+          filters:
+            branches:
+              only: [master]
       - notify_on_success:
           requires:
             - deploy-infrastructure
