@@ -116,7 +116,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [fronted-dependencies]
+          keys: [frontend-dependencies]
       - run:
           name: Front-end test
           command: |
@@ -277,7 +277,7 @@ jobs:
       - run:
           name: Deploy frontend objects
           command: |
-            cd fronted
+            cd frontend
             npm run build
             aws s3 cp dist s3://udapeople-${CIRCLE_WORKFLOW_ID:0:7} --recursive
       - notify_on_failure
@@ -417,7 +417,7 @@ workflows:
       - deploy-frontend:
           requires: [run-migrations]
       - deploy-backend:
-          requires: [run-migrations]
+          requires: [deploy-frontend]
       - notify_on_success:
           requires:
             - deploy-frontend
