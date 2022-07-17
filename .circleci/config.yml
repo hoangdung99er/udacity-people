@@ -120,10 +120,9 @@ jobs:
       - run:
           name: Back-end scan
           command: |
-             cd backend
-             npm install
-             npm audit fix --force --audit-level=critical
-             npm audit --audit-level=critical
+              cd backend
+              npm install
+              npm audit fix --force
 
 #   deploy-infrastructure:
 #     docker:
