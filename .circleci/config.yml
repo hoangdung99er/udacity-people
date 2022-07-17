@@ -199,6 +199,7 @@ jobs:
           paths:
             - project/.circleci/ansible/inventory.txt
       - notify_on_failure
+      - destroy-environment
 
 #   configure-infrastructure:
 #     docker:
